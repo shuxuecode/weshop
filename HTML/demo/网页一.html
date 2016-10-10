@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+	<head>
+		<title> New Document </title>
+		<meta name="Generator" content="EditPlus">
+		<meta name="Author" content="">
+		<meta name="Keywords" charset="utf-8">
+		<meta name="Description" content="">
+		<link rel="stylesheet" href="css/sm.min.css">
+		<link rel="stylesheet" href="css/sm-extend.min.css">
+	</head>
+
+	<body>
+
+		<div class="page-group">
+			<div class="page page-current" id="router">
+				<!-- 你的html代码 -->
+
+				<header class="bar bar-nav">
+					<h1 class="title">标题</h1>
+				</header>
+
+				<!--工具栏-->
+				<nav class="bar bar-tab">
+					<a class="tab-item external active" href="#">
+						<span class="icon icon-home"></span>
+						<span class="tab-label">首页</span>
+					</a>
+					<a class="tab-item external" href="#dingdan">
+						<span class="icon icon-star"></span>
+						<span class="tab-label">订单</span>
+					</a>
+					<a class="tab-item external" href="#">
+						<span class="icon icon-me"></span>
+						<span class="tab-label">我</span>
+					</a>
+
+					<!--<a class="tab-item external" href="#">
+						<span class="icon icon-settings"></span>
+						<span class="tab-label">设置</span>
+					</a>-->
+				</nav>
+
+				<div class="content">
+					<!-- 这里是页面内容区 -->
+					<div>
+
+						<div>
+							<img src="https://ss2.bdstatic.com/8_V1bjqh_Q23odCf/pacific/740584997.jpg" />
+						</div>
+						<div>
+							<p class="goods-title">暴风太阳镜</p>
+						</div>
+						<div>
+							<p class="goods-price">
+								<em>￥22.80</em>
+							</p>
+						</div>
+					</div>
+
+					<!---->
+					<div v-for="item in items" class="good-list">
+						<div>
+
+							<div>
+								<img v-bind:src="item.imgSrc" />
+							</div>
+							<div>
+								<p class="goods-title">{{item.goodTitle}}</p>
+							</div>
+							<div>
+								<p class="goods-price">
+									<em>￥{{item.goodPrice}}</em>
+								</p>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="" id="demo">{{message}}</div>
+				</div>
+
+			</div>
+
+			<div class="page" id="dingdan">...</div>
+
+		</div>
+
+		<script type='text/javascript' src='js/zepto.js' charset='utf-8'></script>
+		<script type='text/javascript' src='js/sm.js' charset='utf-8'></script>
+		<script type='text/javascript' src='js/sm-extend.js' charset='utf-8'></script>
+		<script type="text/javascript" src="vue.js" charset="UTF-8"></script>
+		<script>
+			var demo = new Vue({
+				el: '#demo',
+				data: {
+					message: 'hello wo'
+				}
+			})
+
+			var list = new Vue({
+				el: '.good-list',
+				data: {
+					items: [{
+						imgSrc: 'https://gss0.baidu.com/80M_cCml_AoJksuboYuT_XF5eBk7hKzk-cq/bos_1466057182.82_815682_3079.jpg@w_225',
+						goodTitle: '酷炫太阳镜',
+						goodPrice: '99.9'
+					}, {
+						imgSrc: 'https://gss0.baidu.com/80M_cCml_AoJksuboYuT_XF5eBk7hKzk-cq/bos_1466057182.82_815682_3079.jpg@w_225',
+						goodTitle: '酷炫太阳镜',
+						goodPrice: '3'
+					}, {
+						imgSrc: 'https://gss0.baidu.com/80M_cCml_AoJksuboYuT_XF5eBk7hKzk-cq/bos_1466057182.82_815682_3079.jpg@w_225',
+						goodTitle: '酷炫太阳镜',
+						goodPrice: '3'
+					}, {
+						imgSrc: 'https://gss0.baidu.com/80M_cCml_AoJksuboYuT_XF5eBk7hKzk-cq/bos_1466057182.82_815682_3079.jpg@w_225',
+						goodTitle: '酷炫太阳镜',
+						goodPrice: '3'
+					}]
+				}
+			})
+
+			$.init();
+		</script>
+	</body>
+
+</html>
