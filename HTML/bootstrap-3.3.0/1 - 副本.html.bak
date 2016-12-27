@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>demo</title>
+  <meta charset="utf-8" />
+
+  <!-- 新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+
+<!-- 可选的Bootstrap主题文件（一般不用引入） -->
+<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+
+
+ </head>
+
+ <body>
+  <h1>你好，世界！</h1>
+
+
+
+<table class="table table-striped table-bordered">
+<tr>
+	<td>1</td>
+	<td>2</td>
+	<td>3</td>
+</tr>
+<tr>
+	<td>a</td>
+	<td>b</td>
+	<td>c</td>
+</tr><tr>
+	<td>a</td>
+	<td>b</td>
+	<td>c</td>
+</tr><tr>
+	<td>a</td>
+	<td>b</td>
+	<td>c</td>
+</tr>
+</table>
+
+
+
+<button>nihao</button>
+
+<div class="modal fade" id="myModal">
+	
+	<div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <h4 class="modal-title" id="myModalLabel">新增</h4>
+        </div>
+        <div class="modal-body">
+ 
+          <div class="form-group">
+            <label for="txt_departmentname">部门名称</label>
+            <input type="text" name="txt_departmentname" class="form-control" id="txt_departmentname" placeholder="部门名称">
+          </div>
+          <div class="form-group">
+            <label for="txt_parentdepartment">上级部门</label>
+            <input type="text" name="txt_parentdepartment" class="form-control" id="txt_parentdepartment" placeholder="上级部门">
+          </div>
+          <div class="form-group">
+            <label for="txt_departmentlevel">部门级别</label>
+            <input type="text" name="txt_departmentlevel" class="form-control" id="txt_departmentlevel" placeholder="部门级别">
+          </div>
+          <div class="form-group">
+            <label for="txt_statu">描述</label>
+            <input type="text" name="txt_statu" class="form-control" id="txt_statu" placeholder="状态">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
+          <button type="button" id="btn_submit" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存</button>
+        </div>
+      </div>
+    </div>
+
+</div>
+
+
+  <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="js/jquery-1.9.1.min.js"></script>
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="js/bootstrap.min.js"></script>
+
+
+<script>
+
+$(function(){
+	
+	$("#btn_add").click(function () {
+     $("#myModalLabel").text("新增");
+     $('#myModal').modal();
+   });
+	
+});
+
+</script>
+
+
+
+
+ </body>
+</html>

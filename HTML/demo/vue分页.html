@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.active{
+				color : red;
+				font-size : 26px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<p>
+当点击分页链接的时候，通过watch cur，子组件分发 page-to 事件，通过 @page-to="loadList" 标签指定使用父组件 loadList 方法处理事件，父组件接收到page值然后ajax加载数据，根据服务端返回计算并更新自身的 pageAll 值，因为子组件prop通过 :all="pageAll" 动态绑定了父组件的pageAll对象，所以子组件会联动更新。
+
+</p>
+
+
+		<div id="item_list">
+			...
+			<pagination :cur="1" :all="pageAll" :page-num="10" @page-to="loadList"></pagination>
+			
+		</div>
+		
+		<script type="text/javascript" src="vue.js" ></script>
+		<script>
+			// 注册一个组件
+			Vue.component('pagination',{
+				template : '#paginationTpl',
+				replace : true,
+				props : ['cur','all','pageNum'],
+				methods : {
+					// 页码点击事件
+					btnClick : function(index){
+						if(index != this.cur){
+							this.cur = index;
+						}
+					}
+				},
+				watch : {
+					"cur" : function(val,oldVal){
+						this.$dispatch('page-to', val);
+					}
+				},
+				computed:{
+					indexes : function(){
+						var list = [];
+						// 计算左右页码
+						var mid = parseInt(this.pageNum / 2); // 中间值
+						var left = Math.max(this.cur - mid, 1);
+						var right = Math.max(this.cur + this.pageNum - mid - 1, this.pageNum);
+						if (right > this.all) {
+							right = this.all;
+						}
+						while (left <= right){
+							list.push(left);
+							left++;
+						}
+						return list;
+					},
+					showLast : function () {
+						return this.cur != this.all;
+					},
+					showFirst : function (){
+						return this.cur != 1;
+					}
+				}
+			});
+		</script>
+	</body>
+	
+	<script type="text/template" id="paginationTpl">
+		<nav v-if="all > 1">
+			<ul class="pagination">
+				<li v-if="showFirst">
+					<a href="javascript:" @click="cur--">&laquo;</a>
+				</li>	
+				<li v-for="index in indexes" :class="{ 'active' : cur == index}">
+					<a @click="btnClick(index)" href="javascript:">{{index}}</a>
+				</li>
+				<li v-if="showLast">
+					<a href="javascript:" @click="cur++">&raquo;</a>
+				</li>
+				<li><a>共<i>{{all}}</i>页</a></li>
+			</ul>
+		</nav>
+	</script>
+	
+	
+	<script type="text/javascript">
+		var vm = new Vue({
+			el : "#item_list",
+			data : {
+				items : [],
+				// 分页参数
+				pageAll : 0, // 总页数，根据服务端返回total值计算
+				perPage : 10 // 每页数量
+			},
+			methods : {
+				loadList : function(page){
+					var that = this;
+					// 模拟
+					that.items = [{name : '1'}];
+					that.perPage = 10;
+					that.pageAll = Math.round(200 / that.perPage);
+				},
+				// 初始化
+				init : function () {
+					this.loadList(1)
+				}
+			}
+			
+		});
+		vm.init();
+		
+	</script>
+	
+</html>
