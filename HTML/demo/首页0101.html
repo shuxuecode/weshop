@@ -1,0 +1,155 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+	<head>
+		<title> New Document </title>
+		<meta name="Generator" content="EditPlus">
+		<meta name="Author" content="">
+		<meta name="Keywords" content="">
+		<meta name="Description" content="">
+		<link rel="stylesheet" href="css/sm.min.css">
+		<link rel="stylesheet" href="css/sm-extend.min.css">
+		<link rel="stylesheet" href="css/style.css"/>
+		<style>
+			.me-swiper {
+				position: relative;
+				top: -20px;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="page-group">
+			<div class="page page-current">
+				<!-- 你的html代码 -->
+
+				<!-- 标题栏 -->
+				<header class="bar bar-nav">
+					<!--<a class="icon icon-me pull-left open-panel"></a>-->
+					<a class="icon icon-left pull-left open-panel"></a>
+
+					<h1 class="title">中大眼科</h1>
+				</header>
+
+				<nav class="bar bar-tab">
+					<a class="tab-item external active" href="#">
+						<span class="icon icon-home"></span>
+						<span class="tab-label">首页</span>
+					</a>
+					<a class="tab-item external" href="#">
+						<span class="icon icon-cart"></span>
+						<span class="tab-label">订单</span>
+					</a>
+					<a class="tab-item external" href="#">
+						<span class="icon icon-me"></span>
+						<span class="tab-label">我</span>
+					</a>
+					<!--<a class="tab-item external" href="#">
+						<span class="icon icon-settings"></span>
+						<span class="tab-label">设置</span>
+					</a>-->
+				</nav>
+
+				<div class="content">
+					<!-- 这里是页面内容区 -->
+					<div class="swiper-container" style="padding-bottom: 0px;">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide"><img src="images/1.png" alt="" style='width: 100%'></div>
+							<div class="swiper-slide"><img src="images/2.png" alt="" style='width: 100%'></div>
+
+						</div>
+						<!--  -->
+						<div class="swiper-pagination me-swiper"></div>
+
+					</div>
+
+					<!-- 热门商品区 -->
+					<div class="content-block-title">热门商品</div>
+					<div class="card">
+						<div class="card-content">
+							<div class="card-content-inner">
+								<div class="list-block media-list">
+									<ul>
+										<li class="item-content">
+											<div class="item-media">
+												<img src="images/1.png" width="100px" />
+											</div>
+											<div class="item-inner">
+												<div class="item-title">商品名称</div>
+												<div class="item-after">杜蕾斯</div>
+											</div>
+										</li>
+
+										<li class="item-content">
+											<div class="item-media">
+												<img src="images/1.png" width="100px" />
+											</div>
+											<div class="item-inner">
+												<div class="item-title">商品名称</div>
+												<div class="item-after">杜蕾斯</div>
+											</div>
+										</li>
+
+										<li class="item-content">
+											<div class="item-media">
+												<img src="images/1.png" width="100px" />
+											</div>
+											<div class="item-inner">
+												<div class="item-title">商品名称</div>
+												<div class="item-after">杜蕾斯</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+					<!-- 商品列表 -->
+					<div class="content-block-title">全部商品</div>
+					<div class="list-block me-list-block">
+						<ul>
+							<li class="item-content">
+								<div class="item-media">
+									<img src="images/1.png" />
+								</div>
+								<div class="item-inner">
+									<div class="item-title">商品名称</div>
+									<div class="item-after">杜蕾斯</div>
+								</div>
+							</li>
+							
+							<li class="item-content">
+								<div class="item-media">
+									<img src="images/1.png" />
+								</div>
+								<div class="item-inner">
+									<div class="item-title">型号</div>
+									<div class="item-after">极致超薄型</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+
+		<script type='text/javascript' src='js/zepto.js' charset='utf-8'></script>
+		<script type='text/javascript' src='js/sm.js' charset='utf-8'></script>
+		<script type='text/javascript' src='js/sm-extend.js' charset='utf-8'></script>
+		<script>
+			$.init();
+
+			$(function() {
+				$(".swiper-container").swiper({
+					autoplay: 3000 //可选选项，自动滑动
+				})
+			});
+		</script>
+	</body>
+
+</html>
