@@ -9,11 +9,32 @@
 		<meta name="Description" content="">
 		<link rel="stylesheet" href="css/sm.min.css">
 		<link rel="stylesheet" href="css/sm-extend.min.css">
-		<link rel="stylesheet" href="css/style.css"/>
+		<link rel="stylesheet" href="css/style.css" />
 		<style>
+			.content {
+				background-color: #f9f9f9;
+				box-shadow: 0 2px 10px rgba(0, 0, 0, .1);
+			}
+			
 			.me-swiper {
 				position: relative;
 				top: -20px;
+			}
+			
+			@media only screen and (min-width: 100px) and (max-width: 640px) {}
+			
+			.media-list .item-content {
+				margin: 4px 0;
+			}
+			
+			img {
+				max-width: 100%;
+				height: auto;
+			}
+			
+			.col-50 {
+				border: 1px solid #e5e5e5;
+				margin: 4px 0;
 			}
 		</style>
 	</head>
@@ -64,6 +85,33 @@
 
 					</div>
 
+					<!-- 优惠券 -->
+					<!--<ul style="text-align: center;list-style:none;">
+						<li style="display: inline-block;
+
+    height: 67px;
+    border: 1px solid #ff93b2;
+    border-radius: 4px;
+    background: #ffeaec;
+    vertical-align: bottom;">
+							<a style="color:#fa5262" href="https://h5.koudaitong.com/v2/ump/promocard/fetch?alias=sjh0e1fw">
+								<div class="custom-coupon-price" style="height: 24px;
+    line-height: 24px;
+    padding-top: 12px;
+    font-size: 24px;
+    overflow: hidden;">
+									<span>￥</span>5.00 </div>
+								<div class="custom-coupon-desc" style="    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+    padding-top: 4px;
+    overflow: hidden;">
+									满60.00元可用
+								</div>
+							</a>
+						</li>
+					</ul>-->
+
 					<!-- 热门商品区 -->
 					<div class="content-block-title">热门商品</div>
 					<div class="card">
@@ -78,6 +126,9 @@
 											<div class="item-inner">
 												<div class="item-title">商品名称</div>
 												<div class="item-after">杜蕾斯</div>
+												<div class="item-after"><em>￥138.00</em></div>
+												<!--<p class="goods-price"><em>￥138.00</em></p>-->
+												<span class="icon icon-cart" style="float: right;"></span>
 											</div>
 										</li>
 
@@ -86,8 +137,8 @@
 												<img src="images/1.png" width="100px" />
 											</div>
 											<div class="item-inner">
-												<div class="item-title">商品名称</div>
-												<div class="item-after">杜蕾斯</div>
+												<div class="item-title">商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称</div>
+												<div class="item-after"><em>￥138.00</em></div>
 											</div>
 										</li>
 
@@ -109,9 +160,19 @@
 
 					<!-- 商品列表 -->
 					<div class="content-block-title">全部商品</div>
-					<div class="list-block me-list-block">
-						<ul>
-							<li class="item-content">
+					<div class="content-padded grid-demo">
+						<div class="row">
+							<div class="col-50">
+								<div class="item-media">
+									<img src="images/1.png" />
+								</div>
+								<div class="item-inner">
+									<div class="item-title" style="height:50px; overflow: hidden; word-break: break-all;">商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称</div>
+									<div class="item-after"><em>￥138.00</em></div>
+									<span class="icon icon-cart" style="float: right;"></span>
+								</div>
+							</div>
+							<div class="col-50">
 								<div class="item-media">
 									<img src="images/1.png" />
 								</div>
@@ -119,20 +180,57 @@
 									<div class="item-title">商品名称</div>
 									<div class="item-after">杜蕾斯</div>
 								</div>
-							</li>
-							
-							<li class="item-content">
+							</div>
+							<div class="col-50">
 								<div class="item-media">
 									<img src="images/1.png" />
 								</div>
 								<div class="item-inner">
-									<div class="item-title">型号</div>
-									<div class="item-after">极致超薄型</div>
+									<div class="item-title">商品名称</div>
+									<div class="item-after">杜蕾斯</div>
 								</div>
-							</li>
-						</ul>
+							</div>
+							<div class="col-50">
+								<div class="item-media">
+									<img src="images/1.png" />
+								</div>
+								<div class="item-inner">
+									<div class="item-title">商品名称</div>
+									<div class="item-after">杜蕾斯</div>
+								</div>
+							</div>
+							<div class="col-50">
+								<div class="item-media">
+									<img src="images/1.png" />
+								</div>
+								<div class="item-inner">
+									<div class="item-title">商品名称</div>
+									<div class="item-after">杜蕾斯</div>
+								</div>
+							</div>
+							<div class="col-50">
+								<div class="item-media">
+									<img src="images/1.png" />
+								</div>
+								<div class="item-inner">
+									<div class="item-title">商品名称</div>
+									<div class="item-after">杜蕾斯</div>
+								</div>
+							</div>
+						</div>
 					</div>
 
+					<div class="more-wrap">
+						<a href="https://wap.koudaitong.com/v2/tag/1ga85ed8t" class="more" target="_blank">查看更多</a>
+					</div>
+
+					<div class="footer">
+						<div class="copyright">
+							<div class="ft-copyright ">
+								<a href="https://youzan.com" target="_blank">zhaoshuxue@163.com</a>
+							</div>
+						</div>
+					</div>
 				</div>
 
 			</div>
