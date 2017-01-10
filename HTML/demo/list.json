@@ -1,0 +1,20 @@
+[
+	{
+		"id": 1,
+		"name": "zhao",
+		"barcode": "aaa",
+		"shortName": "可以"
+	},
+	{
+		"id": 2,
+		"name": "shu",
+		"barcode": "不不不",
+		"shortName": "可以"
+	},
+	{
+		"id": 3,
+		"name": "学",
+		"barcode": "ccc",
+		"shortName": "可以"
+	}
+]
