@@ -1,5 +1,8 @@
 package com.zsx.web.service.Impl;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -10,28 +13,28 @@ import com.zsx.web.entity.User;
 import com.zsx.web.service.UserService;
 
 @Service("userService")
+@Transactional
 public class UserServiceImpl implements UserService {
 
 	@Resource
 	private UserMapper userMapper;
 	
-	public User searchById(String id){
+	public User searchById(Long id){
 		return userMapper.selectByPrimaryKey(id);
 	}
 	
-	@Transactional
 	public int insert(User user) {
 		return userMapper.insert(user);
 	}
 	
-//	@Transactional
-//	public int update(User user) {
-//		return userMapper.updateByPrimaryKey(user);
-//	}
-	
-	@Transactional
-	public int delete(String id){
+	public int delete(Long id){
 		return userMapper.deleteByPrimaryKey(id);
+	}
+
+	@Override
+	public List<Map<String, Object>> executeSQL(String sql) {
+		// TODO Auto-generated method stub
+		return userMapper.executeSQL(sql);
 	}
 	
 }

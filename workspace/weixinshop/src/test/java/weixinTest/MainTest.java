@@ -14,7 +14,7 @@ public class MainTest {
 				"classpath:/applicationContext.xml", "classpath:/spring-mybatis.xml");
 //		RedisTemplate redis = (RedisTemplate) ac.getBean("redisTemplate");
 		UserMapper bean = ac.getBean(UserMapper.class);
-		User selectByPrimaryKey = bean.selectByPrimaryKey("1");
+		User selectByPrimaryKey = bean.selectByPrimaryKey(1L);
 		System.out.println(JSON.toJSONString(selectByPrimaryKey));
 	}
 }

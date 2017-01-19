@@ -15,6 +15,9 @@
 		<spring.version>4.3.2.RELEASE</spring.version>
 		<!-- mybatis版本号 -->
 		<mybatis.version>3.4.1</mybatis.version>
+		<mybatis.spring.version>1.3.0</mybatis.spring.version>
+		<pagehelper.version>4.1.6</pagehelper.version>
+		<fastjson.version>1.2.16</fastjson.version>
 		<!-- log4j日志文件管理包版本 -->
 		<slf4j.version>1.7.21</slf4j.version>
 		<log4j.version>1.2.17</log4j.version>
@@ -22,15 +25,15 @@
 
 
 	<dependencies>
-		
+
 		<!-- spring mvc -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-		
-		
+
+
 		<!-- spring核心包 -->
 		<!-- springframe start -->
 		<dependency>
@@ -88,7 +91,7 @@
 			<artifactId>aspectjweaver</artifactId>
 			<version>1.8.9</version>
 		</dependency>
-		
+
 		<!-- mybatis核心包 -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
@@ -100,15 +103,15 @@
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
-			<version>1.3.0</version>
+			<version>${mybatis.spring.version}</version>
 		</dependency>
-		
-		
+
+
 		<!-- MyBatis 分页插件 PageHelper -->
 		<dependency>
 			<groupId>com.github.pagehelper</groupId>
 			<artifactId>pagehelper</artifactId>
-			<version>4.1.6</version>
+			<version>${pagehelper.version}</version>
 		</dependency>
 
 		<!-- mysql驱动包 -->
@@ -117,7 +120,7 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.38</version>
 		</dependency>
-		
+
 		<!-- 阿里巴巴数据源包 -->
 		<dependency>
 			<groupId>com.alibaba</groupId>
@@ -129,9 +132,9 @@
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
-			<version>1.2.16</version>
+			<version>${fastjson.version}</version>
 		</dependency>
-		
+
 		<!-- -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
@@ -152,8 +155,8 @@
 			<artifactId>dom4j</artifactId>
 			<version>2.0.0</version>
 		</dependency>
-		
-		
+
+
 		<!-- 日志文件管理包 -->
 		<!-- log start -->
 		<dependency>
@@ -172,11 +175,16 @@
 			<version>${slf4j.version}</version>
 		</dependency>
 		<!-- log end -->
-		
-		
-		
-	
-	
+
+		<!-- C 标签 -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+
+
 		<!-- junit测试包 -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -184,23 +192,23 @@
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
+
+
+
+
+
+
+
+
+
+
+
+
 	</dependencies>
 	<build>
 		<finalName>weixinshop</finalName>
-		
+
 		<!-- -->
 		<sourceDirectory>src/main/java</sourceDirectory>
 		<testSourceDirectory>src/test/java</testSourceDirectory>
@@ -215,11 +223,11 @@
 				<directory>src/test/resources</directory>
 			</testResource>
 		</testResources>
-		
+
 		<outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
 		<testOutputDirectory>src/main/webapp/WEB-INF/classes</testOutputDirectory>
-		
-		
+
+
 		<!-- Maven插件 -->
 		<plugins>
 			<!-- 编译插件 -->
@@ -258,8 +266,8 @@
 
 
 		</plugins>
-		
-		
-		
+
+
+
 	</build>
 </project>

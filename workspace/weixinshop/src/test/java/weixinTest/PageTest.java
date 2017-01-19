@@ -1,7 +1,5 @@
 package weixinTest;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.junit.After;
@@ -11,17 +9,14 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.alibaba.fastjson.JSON;
-import com.github.pagehelper.PageHelper;
-import com.weshop.dao.UserDao;
-import com.zsx.web.entity.User;
+import com.zsx.web.dao.UserMapper;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "file:src/main/resources/applicationContext.xml", "file:src/main/resources/spring-mybatis.xml", "file:src/main/resources/springMVC-servlet.xml" })
 public class PageTest {
 
 	@Resource
-	private UserDao userDao;
+	private UserMapper userDao;
 	
 	
 	
@@ -39,12 +34,12 @@ public class PageTest {
 	
 	@Test
 	public void get() {
-		PageHelper.startPage(2, 2);
-		List<User> selectAll = userDao.selectAll();
-		System.out.println(selectAll.size());
-		for (User user : selectAll) {
-			System.out.println(JSON.toJSONString(user));
-		}
+//		PageHelper.startPage(2, 2);
+//		List<User> selectAll = userDao.selectAll();
+//		System.out.println(selectAll.size());
+//		for (User user : selectAll) {
+//			System.out.println(JSON.toJSONString(user));
+//		}
 	}
 	
 	

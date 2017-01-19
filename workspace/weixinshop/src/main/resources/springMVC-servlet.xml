@@ -12,7 +12,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
       http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
 
 	<!-- 注解扫描包 , 多个写法:com.zsx.web.*,org.weixin.*  (以完成bean创建和自动依赖注入的功能)-->
-	<context:component-scan base-package="com.zsx.web.*,org.weixin.*" >
+	<context:component-scan base-package="com.zsx.web.*,com.weshop.*,org.weixin.*" >
 		<!-- springMVC配置文件中将Service注解给去掉 -->
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service" />
@@ -60,7 +60,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 	<!-- 视图解释类 -->
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/"></property>
+		<property name="prefix" value="/WEB-INF/view/"></property>
 		<!--可为空,方便实现自已的依据扩展名来选择视图解释类的逻辑 -->
 		<property name="suffix" value=".jsp"></property>
 	</bean>

@@ -1,7 +1,5 @@
 package weixinTest;
 
-import javax.jws.soap.SOAPBinding.Use;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,12 +7,9 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.alibaba.fastjson.JSON;
-import com.weshop.dao.UserDao;
 import com.zsx.web.dao.UserMapper;
 import com.zsx.web.entity.User;
 import com.zsx.web.service.UserService;
@@ -39,9 +34,6 @@ public class UtilTest {
 	private UserMapper userMapper;
 	
 	@Autowired
-	private UserDao userDao;
-	
-	@Autowired
 	private UserService userService;
 	
 	@Before
@@ -57,26 +49,15 @@ public class UtilTest {
 	
 	@Test
 	public void get() {
-		User user = userMapper.selectByPrimaryKey("1");
+		User user = userMapper.selectByPrimaryKey(1L);
 		System.out.println(JSON.toJSONString(user));
 	}
 	
 	@Test
-	public void getAll(){
-		User selectByPrimaryKey = userDao.selectByPrimaryKey("99");
-		System.out.println(JSON.toJSONString(selectByPrimaryKey));
-	}
-	
-	
-	
-	
-	@Test
 	public void add(){
 		User user = new User();
-		user.setId(""
-				+ "7");
-		user.setName("Zsx");
-		user.setPwd("pwd");
+		user.setUsername("");
+		user.setPassword("");
 		userService.insert(user);
 	}
 	

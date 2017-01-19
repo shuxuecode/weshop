@@ -2,7 +2,6 @@ package com.zsx.web.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
-import com.zsx.web.entity.User;
 import com.zsx.web.service.UserService;
 
 /**
@@ -59,21 +57,5 @@ public class UserController {
 		out.close();
 	}
 	
-	/**
-	 * 获取用户列表
-	 */
-	@RequestMapping("/getUserList")
-	public void getJson(HttpServletRequest request, HttpServletResponse response)
-			throws IOException {
-//		List<Tuser> list = userService.getAllUser();
-		
-		User user = userService.searchById("1");
-		
-		response.setContentType("application/json;charset=utf-8");
-		PrintWriter out = response.getWriter();
-		out.println(JSON.toJSONString(user));
-		out.flush();
-		out.close();
-	}
 
 }
