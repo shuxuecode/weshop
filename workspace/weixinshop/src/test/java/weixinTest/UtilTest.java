@@ -47,19 +47,19 @@ public class UtilTest {
 		System.out.println("测试结束！！！");
 	}
 	
-	@Test
-	public void get() {
-		User user = userMapper.selectByPrimaryKey(1L);
-		System.out.println(JSON.toJSONString(user));
-	}
+//	@Test
+//	public void get() {
+//		User user = userMapper.selectByPrimaryKey(1L);
+//		System.out.println(JSON.toJSONString(user));
+//	}
 	
-	@Test
-	public void add(){
-		User user = new User();
-		user.setUsername("");
-		user.setPassword("");
-		userService.insert(user);
-	}
+//	@Test
+//	public void add(){
+//		User user = new User();
+//		user.setUsername("");
+//		user.setPassword("");
+//		userService.insert(user);
+//	}
 	
 	
 	

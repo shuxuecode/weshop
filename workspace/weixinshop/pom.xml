@@ -183,6 +183,12 @@
 			<version>1.2</version>
 		</dependency>
 
+		
+		<dependency>
+			<groupId>com.qiniu</groupId>
+			<artifactId>qiniu-java-sdk</artifactId>
+			<version>[7.2.0, 7.2.99]</version>
+		</dependency>
 
 
 		<!-- junit测试包 -->
@@ -194,11 +200,13 @@
 		</dependency>
 
 
-
-
-
-
-
+<!-- 
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-servlet-api</artifactId>
+			<version>7.0.69</version>
+		</dependency>
+ -->
 
 
 
@@ -207,7 +215,7 @@
 
 	</dependencies>
 	<build>
-		<finalName>weixinshop</finalName>
+		<finalName>/</finalName>
 
 		<!-- -->
 		<sourceDirectory>src/main/java</sourceDirectory>
@@ -262,8 +270,6 @@
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
-
-
 
 		</plugins>
 

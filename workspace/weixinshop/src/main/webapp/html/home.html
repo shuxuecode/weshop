@@ -1,15 +1,11 @@
 ﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-
 	<head>
-		<title> New Document </title>
-		<meta name="Generator" content="EditPlus">
-		<meta name="Author" content="">
-		<meta name="Keywords" content="">
-		<meta name="Description" content="">
-		<link rel="stylesheet" href="css/sm.min.css">
-		<link rel="stylesheet" href="css/sm-extend.min.css">
-		<link rel="stylesheet" href="css/style.css" />
+		<title>微商城</title>
+		<meta name="Author" content="zsx">
+		<link rel="stylesheet" href="../js/sui/sm.min.css">
+		<link rel="stylesheet" href="../js/sui/sm-extend.min.css">
+		<link rel="stylesheet" href="../js/sui/style.css" />
 		<style>
 			.content {
 				background-color: #f9f9f9;
@@ -129,22 +125,22 @@
 					<div class="card">
 						<div class="card-content">
 							<div class="card-content-inner">
-								<div class="list-block media-list">
+								<div class="list-block media-list hotGoodsList">
 									<ul>
-										<li class="item-content" link-id="123">
+										<li class="item-content" v-for="obj in list">
+											<input type="hidden" value="{{obj.id}}" />
 											<div class="item-media">
-												<img src="images/aaa/2.jpg" width="120px" />
+												<img v-bind:src="obj.image" width="120px" />
 											</div>
 											<div class="item-inner">
-												<div class="item-title">最新上架眼镜框</div>
-												<div class="item-after">人气最高</div>
-												<div class="item-after"><em>￥99.00</em></div>
-												<!--<p class="goods-price"><em>￥99.00</em></p>-->
+												<div class="item-title">{{obj.shortName}}</div>
+												<div class="item-after">{{obj.summary}}</div>
+												<div class="item-after"><em>￥{{obj.price}}</em></div>
 												<span class="icon icon-cart icon-cart-me-1"></span>
 											</div>
 										</li>
-
-										<li class="item-content">
+										
+										<!-- <li class="item-content">
 											<div class="item-media">
 												<img src="images/aaa/4.jpg" width="120px" />
 											</div>
@@ -165,7 +161,7 @@
 												<div class="item-after"><em>￥99.00</em></div>
 												<span class="icon icon-cart icon-cart-me-1"></span>
 											</div>
-										</li>
+										</li> -->
 									</ul>
 								</div>
 
@@ -177,16 +173,19 @@
 					<div class="content-block-title">全部商品</div>
 					<div class="content-padded grid-demo">
 						<div class="row">
-							<div class="col-50" link-id="222">
+							<div class="col-50" v-for="obj in list">
+								<input type="hidden" value="{{obj.id}}" />
 								<div class="item-media">
-									<img src="images/aaa/5.jpg" />
+									<img v-bind:src="obj.image" />
 								</div>
 								<div class="item-inner">
-									<div class="item-title">眼镜</div>
-									<div class="item-after"><em>￥99.00</em></div>
+									<div class="item-title">{{obj.shortName}}</div>
+									<div class="item-after"><em>￥{{obj.price}}</em></div>
 									<span class="icon icon-cart icon-cart-me-2"></span>
 								</div>
 							</div>
+							
+							<!-- 
 							<div class="col-50">
 								<div class="item-media">
 									<img src="images/aaa/4.jpg" />
@@ -227,6 +226,7 @@
 									<span class="icon icon-cart icon-cart-me-2"></span>
 								</div>
 							</div>
+							 -->
 						</div>
 					</div>
 
@@ -245,14 +245,14 @@
 -->
 
 				</div>
-
+				
 			</div>
 		</div>
 
-		<script type='text/javascript' src='js/zepto.js' charset='utf-8'></script>
-		<script type='text/javascript' src='js/sm.js' charset='utf-8'></script>
-		<script type='text/javascript' src='js/sm-extend.js' charset='utf-8'></script>
-		<script type="text/javascript" src="vue.js"></script>
+		<script type='text/javascript' src='../js/zepto.min.js' charset='utf-8'></script>
+		<script type='text/javascript' src='../js/sui/sm.js' charset='utf-8'></script>
+		<script type='text/javascript' src='../js/sui/sm-extend.js' charset='utf-8'></script>
+		<script type="text/javascript" src="../js/vue.js"></script>
 		<script>
 			$.init();
 
@@ -260,15 +260,20 @@
 				
 
 				// 热门商品点击事件
-				$('.content .card .card-content .card-content-inner .list-block ul li').on('click', function() {
-					console.log(this);
-//					$(this).attr("link-id")
+				$('.content .card .card-content .card-content-inner .list-block').on('click', "ul li", function() {
+					var id = $($(this).children("input").get(0)).val();
+					//$("#gotoUrl").attr("href", "goodsDetail.html?id=" + id);
+					//$("#clickSpan").click();
+					//document.getElementById("gotoUrl").click();
+					window.location.href="goodsDetail.html?id=" + id;
 				});
 				
 				//、
-				$('.content .content-padded .row .col-50').on('click', function() {
-					console.log($(this).attr("link-id"));
-//					$(this).attr("link-id")
+				$('.content .content-padded .row').on('click', ".col-50", function() {
+					var id = $($(this).children("input").get(0)).val();
+					//$("#gotoUrl").attr("href", "goodsDetail.html?id=" + id);
+					//$("#clickSpan").click();
+					window.location.href="goodsDetail.html?id=" + id;
 				});
 			});
 
@@ -283,7 +288,7 @@
 						var _self = this;
 						$.ajax({
 							type: 'GET',
-							url: 'json/swiper-image-list.json',
+							url: '/app/homeImg',
 							success: function(data) {
 								_self.imageList = data;
 
@@ -302,6 +307,56 @@
 			})
 
 			goodsVue.nameSearch();
+			
+			
+			
+			
+			var hotGoodsVue = new Vue({
+				el: '.hotGoodsList',
+				data: {
+					list: ''
+				},
+				methods: {
+					getList: function() {
+
+						var _self = this;
+						$.ajax({
+							type: 'GET',
+							url: '/app/hotGoods',
+							success: function(data) {
+								_self.list = data;
+							}
+						});
+
+					}
+				}
+			})
+
+			hotGoodsVue.getList();
+			
+			
+			var allGoodsVue = new Vue({
+				el: '.content-padded',
+				data: {
+					list: ''
+				},
+				methods: {
+					getList: function() {
+
+						var _self = this;
+						$.ajax({
+							type: 'GET',
+							url: '/app/allGoods',
+							success: function(data) {
+								_self.list = data;
+							}
+						});
+
+					}
+				}
+			})
+
+			allGoodsVue.getList();
 		</script>
 	</body>
 

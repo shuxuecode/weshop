@@ -3,10 +3,10 @@
 
 	<head>
 		<meta charset="UTF-8">
-		<title></title>
-		<link rel="stylesheet" href="css/sm.min.css">
-		<link rel="stylesheet" href="css/sm-extend.min.css">
-		<link rel="stylesheet" href="css/style.css" />
+		<title>商品详情页面</title>
+		<link rel="stylesheet" href="/js/sui/sm.min.css">
+		<link rel="stylesheet" href="/js/sui/sm-extend.min.css">
+		<link rel="stylesheet" href="/js/sui/style.css" />
 		<style>
 			.popup {
 				position: absolute;
@@ -67,10 +67,9 @@
 					<div class="card demo-card-header-pic">
 						<div class="swiper-container" style="padding-bottom: 0px; border-bottom: 1px solid #ddd;">
 							<div class="swiper-wrapper">
-								<div class="swiper-slide"><img src="images/1.jpg" alt="" style='width: 100%'></div>
-								<div class="swiper-slide"><img src="images/2.jpg" alt="" style='width: 100%'></div>
-								<div class="swiper-slide"><img src="images/3.jpg" alt="" style='width: 100%'></div>
-
+								<div class="swiper-slide" v-for="image in imageList">
+									<img v-bind:src="image.url" alt="" style='width: 100%'>
+								</div>
 							</div>
 							<!--  -->
 							<div class="swiper-pagination me-swiper"></div>
@@ -203,17 +202,60 @@
 			</div>
 		</div>
 
-		<script type='text/javascript' src='js/zepto.js' charset='utf-8'></script>
-		<script type='text/javascript' src='js/sm.js' charset='utf-8'></script>
-		<script type='text/javascript' src='js/sm-extend.js' charset='utf-8'></script>
+		<script type='text/javascript' src='/js/zepto.min.js' charset='utf-8'></script>
+		<script type='text/javascript' src='/js/sui/sm.js' charset='utf-8'></script>
+		<script type='text/javascript' src='/js/sui/sm-extend.js' charset='utf-8'></script>
+		<script type="text/javascript" src="/js/vue.js"></script>
 		<script>
 			$.init();
+			
+			function getQueryString(name) { 
+				var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+				var r = window.location.search.substr(1).match(reg); 
+				if (r != null) return unescape(r[2]); 
+				return null; 
+			}
+			
+			var id = getQueryString("id");
 
 			$(function() {
 				$(".swiper-container").swiper({
 					autoplay: 3000 //可选选项，自动滑动
 				})
 			});
+			
+			
+			var goodsImageListVue = new Vue({
+				el: '.swiper-wrapper',
+				data: {
+					imageList: ''
+				},
+				methods: {
+					getImages: function() {
+
+						var _self = this;
+						$.ajax({
+							type: 'GET',
+							url: '/app/goodsImages?id=' + id,
+							success: function(data) {
+								_self.imageList = data;
+
+								_self.$nextTick(function() {
+									//			                		alert('v-for渲染已经完成');
+									$(".swiper-container").swiper({
+										autoplay: 3000 //可选选项，自动滑动
+									});
+								});
+
+							}
+						});
+
+					}
+				}
+			})
+
+			goodsImageListVue.getImages();
+			
 
 			$(document).on('click', '.create-popup', function() {
 				var popupHTML = '<div class="popup">' +
@@ -225,6 +267,9 @@
 //				$.popup(popupHTML);
 				$.popup($("#zhao").html());
 			});
+			
+			
+			
 		</script>
 	</body>
 
