@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.weshop.service.WeshopService;
 
 @Controller
@@ -39,6 +40,12 @@ public class WeshopAppController {
 	@ResponseBody
 	public JSONArray getGoodsDetailImages(Long id) {
 		return weshopService.getGoodsDetailImages(id);
+	}
+	
+	@RequestMapping("goodsDetail")
+	@ResponseBody
+	public JSONObject getGoodsDetail(Long id) {
+		return weshopService.getGoodsDetail(id);
 	}
 	
 }

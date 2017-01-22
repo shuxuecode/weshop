@@ -80,14 +80,14 @@
 						</div>-->
 						<div class="card-content">
 							<div class="card-content-inner">
-								<p>元旦包邮 限量爆款太阳镜</p>
-								<em>￥97.00</em>
+								<p>{{longName}}</p>
+								<em>￥{{price}}</em>
 							</div>
 						</div>
 						<div class="card-footer">
 							<p class="color-gray">运费：免运费</p>
-							<p class="color-gray">剩余：15</p>
-							<p class="color-gray">销量：85</p>
+							<p class="color-gray">剩余：{{sellNum}}</p>
+							<p class="color-gray">销量：{{totalNum}}</p>
 						</div>
 					</div>
 
@@ -106,7 +106,7 @@
 						<div class="card-header">商品说明</div>
 						<div class="card-content">
 							<div class="card-content-inner">
-								BOLON眼镜,永远站在时尚前沿的经典。在创新中保持至臻优雅的风格品味,彰显夺目迷人的气质与个性魅力;BOLON,始终是优雅、浪漫、艺术的完美演绎。
+								{{detail}}
 							</div>
 						</div>
 						<div class="card-footer">其他内容</div>
@@ -116,46 +116,20 @@
 					<div class="content-block-title">选购其他商品</div>
 					<div class="content-padded grid-demo">
 						<div class="row">
-							<div class="col-50">
+							
+							<div class="col-50" v-for="obj in list">
+								<input type="hidden" value="{{obj.id}}" />
 								<div class="item-media">
-									<img src="images/aaa/1.jpg" />
+									<img v-bind:src="obj.image" />
 								</div>
 								<div class="item-inner">
-									<div class="item-title">眼镜</div>
-									<div class="item-after"><em>￥99.00</em></div>
+									<div class="item-title">{{obj.shortName}}</div>
+									<div class="item-after"><em>￥{{obj.price}}</em></div>
 									<span class="icon icon-cart icon-cart-me-2"></span>
 								</div>
 							</div>
-							<div class="col-50">
-								<div class="item-media">
-									<img src="images/aaa/1.jpg" />
-								</div>
-								<div class="item-inner">
-									<div class="item-title">眼镜</div>
-									<div class="item-after"><em>￥99.00</em></div>
-									<span class="icon icon-cart icon-cart-me-2"></span>
-								</div>
-							</div>
-							<div class="col-50">
-								<div class="item-media">
-									<img src="images/aaa/1.jpg" />
-								</div>
-								<div class="item-inner">
-									<div class="item-title">眼镜</div>
-									<div class="item-after"><em>￥99.00</em></div>
-									<span class="icon icon-cart icon-cart-me-2"></span>
-								</div>
-							</div>
-							<div class="col-50">
-								<div class="item-media">
-									<img src="images/aaa/1.jpg" />
-								</div>
-								<div class="item-inner">
-									<div class="item-title">眼镜</div>
-									<div class="item-after"><em>￥99.00</em></div>
-									<span class="icon icon-cart icon-cart-me-2"></span>
-								</div>
-							</div>
+							
+							
 						</div>
 					</div>
 
@@ -255,6 +229,66 @@
 			})
 
 			goodsImageListVue.getImages();
+			
+			
+			var allGoodsVue = new Vue({
+				el: '.content-padded',
+				data: {
+					list: ''
+				},
+				methods: {
+					getList: function() {
+
+						var _self = this;
+						$.ajax({
+							type: 'GET',
+							url: '/app/allGoods',
+							success: function(data) {
+								_self.list = data;
+							}
+						});
+
+					}
+				}
+			})
+
+			allGoodsVue.getList();
+			
+			
+			var goodsDetailVue = new Vue({
+				el: '.content',
+				data: {
+					longName: '',
+					price: '',
+					totalNum: '',
+					sellNum: '',
+					detail: ''
+				},
+				methods: {
+					getData: function() {
+
+						var _self = this;
+						$.ajax({
+							type: 'GET',
+							url: '/app/goodsDetail?id=' + id,
+							success: function(data) {
+								_self.longName = data.longName;
+								_self.price = data.price;
+								_self.totalNum = data.totalNum;
+								_self.sellNum = data.sellNum;
+								_self.detail = data.detail;
+
+							}
+						});
+
+					}
+				}
+			})
+
+			goodsDetailVue.getData();
+			
+			
+			
 			
 
 			$(document).on('click', '.create-popup', function() {

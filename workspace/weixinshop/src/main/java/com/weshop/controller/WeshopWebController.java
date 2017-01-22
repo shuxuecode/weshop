@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONArray;
+import com.weshop.model.json.JsonTable;
 import com.weshop.service.WeshopService;
 
 @Controller
@@ -18,14 +19,27 @@ public class WeshopWebController {
 	
 	@RequestMapping("homeImg")
 	@ResponseBody
-	public JSONArray getHomeImages() {
-		return weshopService.getHomeImages();
+	public JsonTable getHomeImages() {
+		return new JsonTable(weshopService.getHomeImages(), 10L);
 	}
 	
 	
-	@RequestMapping("home")
+	@RequestMapping("allGoods")
+	@ResponseBody
+	public JsonTable getAllGoods() {
+		return new JsonTable(weshopService.getAllGoods(), 10L);
+	}
+	
+	
+	@RequestMapping("/index")
 	public String homePage() {
-		return "/homePage";
+		return "/web/index";
+	}
+	
+	
+	@RequestMapping("/goodsListPage")
+	public String goodsListPage() {
+		return "/web/goodsList";
 	}
 	
 }
