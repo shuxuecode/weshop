@@ -1,5 +1,6 @@
 package com.zsx.web.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
 
@@ -36,7 +37,12 @@ public class UploadController {
 			//newName 生成的uuID文件名
 			String newName = UUID.randomUUID().toString().replace("-", "") + fileType;
 			
-			boolean upload = new QiNiuUtil().upload(file.getInputStream(), newName);
+			// 临时文件
+			File tmpFile = new File(System.getProperty("java.io.tmpdir") + System.getProperty("file.separator") + newName);
+			
+			file.transferTo(tmpFile);
+			
+			boolean upload = new QiNiuUtil().upload(tmpFile, newName);
 			
 			if (upload) {
 				jsonObject.put("success", true);

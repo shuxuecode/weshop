@@ -1,6 +1,7 @@
 package com.zsx.core.util;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.UUID;
@@ -35,7 +36,7 @@ public class QiNiuUtil {
 
 	public static void main(String args[]) throws IOException {
 		
-		File file = new File("z:/1.jpg");
+		File file = new File("D:/wechat/weshop/HTML/demo/images/2.jpg");
 		
 		//name 原文件名
 		String name = "1.jpg"; // file.getOriginalFilename();
@@ -44,8 +45,10 @@ public class QiNiuUtil {
 		//secondName 生成的uuID文件名
 		String secondName = UUID.randomUUID().toString().replace("-", "") + fileType;
 //        new QiNiuUtil().upload(file, secondName);
+        InputStream is = new FileInputStream(file);
+        new QiNiuUtil().upload(is, secondName);
 		
-		System.out.println(JSONObject.parseObject("{\"hash\":\"FpOk4knwEbPdkU2ZPqo-Ou7qeAm9\",\"key\":\"fde9032f48444f2db476b6356a98ce82.jpg\"}").get("key"));
+//		System.out.println(JSONObject.parseObject("{\"hash\":\"FpOk4knwEbPdkU2ZPqo-Ou7qeAm9\",\"key\":\"fde9032f48444f2db476b6356a98ce82.jpg\"}").get("key"));
 		
     }
 
