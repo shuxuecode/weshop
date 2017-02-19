@@ -12,6 +12,8 @@
 </head>
 <body>
 
+	<h1>首页图片轮播</h1>
+
 
 	<div>
 		<table id="table"></table>

@@ -11,7 +11,7 @@
 	
 </head>
 <body>
-
+<h1>商品详情页面图片轮播</h1>
 
 	<div>
 		<table id="table"></table>

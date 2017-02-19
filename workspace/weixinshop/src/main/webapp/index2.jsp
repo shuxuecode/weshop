@@ -13,13 +13,29 @@ String userName = (session.getAttribute("userName") == null) ? "" : session.getA
 <title>中大眼科</title>
 </head>
 <body>
-<h2>你好</h2>
+<h2>Hello World!</h2>
 <br/>
+<% if("zhao".equals(userName)){ %>
 
-<a href="<%=basePath%>/weshop/index">首页图片轮播</a>
-<br/><br/><br/>
-<a href="<%=basePath%>/weshop/goodsListPage">商品列表</a>
+<h4>欢迎回来！  <%=userName %></h4>
+<button onclick="logout()">退出</button>
+
+<%}else{ %>
+您未登录， 请
+<a href="<%=basePath%>login.jsp">登录</a>
+
+<%} %>
+
+
 
 
 </body>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+	function logout(){
+		$.get("<%=basePath%>user/logout", function(data){
+			location.href = '<%=basePath%>';
+		});
+	}
+</script>
 </html>

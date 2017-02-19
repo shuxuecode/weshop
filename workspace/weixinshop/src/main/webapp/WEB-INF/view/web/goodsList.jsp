@@ -11,7 +11,7 @@
 	
 </head>
 <body>
-
+<h1>商品列表</h1>
 
 	<div>
 		<table id="table"></table>
