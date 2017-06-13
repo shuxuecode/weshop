@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.zsx.web.dao.UserMapper">
+
+	<resultMap id="userResultMap" type="com.zsx.web.entity.User">
+		<id property="id" column="id" javaType="Long" jdbcType="BIGINT" />
+		<result property="username" column="username" javaType="String" jdbcType="VARCHAR" />
+		<result property="password" column="password" javaType="String" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<select id="selectByPrimaryKey" resultMap="userResultMap">
+		select `id` ,`username` ,`password` from t_user where `id` = #{id}
+	</select>
+
+	<insert id="insert" parameterType="com.zsx.web.entity.User"
+		useGeneratedKeys="true">
+		insert into t_user (`id` ,`name` ,`pwd` ) values
+		(#{id},#{name},#{pwd})
+	</insert>
+
+	<delete id="deleteByPrimaryKey">
+		delete from t_user where `id` = #{id}
+	</delete>
+
+	<select id="executeSQL" parameterType="java.lang.String"
+		resultType="java.util.HashMap">
+		${sql}
+	</select>
+</mapper>

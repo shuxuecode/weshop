@@ -1,0 +1,32 @@
+html {
+    font-size: 20px
+}
+
+@media only screen and (min-width: 400px) {
+    html {
+        font-size:31.33px!important
+    }
+}
+
+@media only screen and (min-width: 414px) {
+    html {
+        font-size:32.08px!important
+    }
+}
+
+@media only screen and (min-width: 480px) {
+    html {
+        font-size:35.6px!important
+    }
+}
+
+.me-list-block li{
+	width: 50%;
+	float: left;
+}
+
+
+.me-list-block li img{
+	width: 50%;
+	float: left;
+}

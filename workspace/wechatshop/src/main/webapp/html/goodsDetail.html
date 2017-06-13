@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>å•†å“è¯¦æƒ…é¡µé¢</title>
+		<link rel="stylesheet" href="/js/sui/sm.min.css">
+		<link rel="stylesheet" href="/js/sui/sm-extend.min.css">
+		<link rel="stylesheet" href="/js/sui/style.css" />
+		<style>
+			.popup {
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				top: auto;
+				height: auto;
+			}
+			
+			.icon-cart-me-2{
+				float: right;
+				margin: 0 .5rem .2rem 0;
+			}
+			
+			.row img {
+				width: 100%;
+				height: auto;
+			}
+			
+			.col-50 {
+				border: 1px solid #e5e5e5;
+				margin: 4px 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="page-group">
+			<div class="page page-current">
+				<!-- ä½ çš„htmlä»£ç  -->
+
+				<!-- æ ‡é¢˜æ  -->
+				<header class="bar bar-nav">
+					<a class="icon icon-left pull-left open-panel" href="javascript: history.go(-1);"></a>
+
+					<h1 class="title">ä¸­å¤§çœ¼ç§‘</h1>
+				</header>
+
+				<nav class="bar bar-tab">
+					<a class="tab-item external" href="#">
+						<span class="icon icon-home"></span>
+						<span class="tab-label">å®¢æœ</span>
+					</a>
+					<a class="tab-item external active" href="#">
+						<span class="icon icon-cart"></span>
+						<span class="tab-label">è´­ç‰©è½¦</span>
+					</a>
+					<a class="tab-item external" href="#" style="width: 2%;background: #FF8854;color: #FFFFFF;">
+						<span class="tab-label">åŠ å…¥è´­ç‰©è½¦</span>
+					</a>
+					<a class="tab-item external" href="#" style="width: 2%;background: #FF4443;color: #FFFFFF;">
+						<span class="tab-label">ç«‹å³è´­ä¹°</span>
+					</a>
+				</nav>
+
+				<div class="content">
+
+					<div class="card demo-card-header-pic">
+						<div class="swiper-container" style="padding-bottom: 0px; border-bottom: 1px solid #ddd;">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide" v-for="image in imageList">
+									<img v-bind:src="image.url" alt="" style='width: 100%'>
+								</div>
+							</div>
+							<!--  -->
+							<div class="swiper-pagination me-swiper"></div>
+
+						</div>
+						<!--<div valign="bottom" class="card-header color-white no-border no-padding">
+							<img class='card-cover' src="images/1.png" alt="">
+						</div>-->
+						<div class="card-content">
+							<div class="card-content-inner">
+								<p>{{longName}}</p>
+								<em>ï¿¥{{price}}</em>
+							</div>
+						</div>
+						<div class="card-footer">
+							<p class="color-gray">è¿è´¹ï¼šå…è¿è´¹</p>
+							<p class="color-gray">å‰©ä½™ï¼š{{sellNum}}</p>
+							<p class="color-gray">é”€é‡ï¼š{{totalNum}}</p>
+						</div>
+					</div>
+
+					<div class="card">
+						<div class="card-content">
+							<div class="card-content-inner  create-popup">
+								<span>é€‰æ‹©ï¼šçœ¼é•œè§„æ ¼</span>
+								<span class="icon icon-right" style="float: right;"></span>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="card">
+						<div class="card-header">å•†å“è¯´æ˜</div>
+						<div class="card-content">
+							<div class="card-content-inner">
+								{{detail}}
+							</div>
+						</div>
+						<div class="card-footer">å…¶ä»–å†…å®¹</div>
+					</div>
+
+					<!-- å…¶å®ƒå•†å“ -->
+					<div class="content-block-title">é€‰è´­å…¶ä»–å•†å“</div>
+					<div class="content-padded grid-demo">
+						<div class="row">
+							
+							<div class="col-50" v-for="obj in list">
+								<input type="hidden" value="{{obj.id}}" />
+								<div class="item-media">
+									<img v-bind:src="obj.image" />
+								</div>
+								<div class="item-inner">
+									<div class="item-title">{{obj.shortName}}</div>
+									<div class="item-after"><em>ï¿¥{{obj.price}}</em></div>
+									<span class="icon icon-cart icon-cart-me-2"></span>
+								</div>
+							</div>
+							
+							
+						</div>
+					</div>
+
+					<!-- About Popup -->
+					<div id="zhao">
+						<div class="popup popup-about">
+							<div class="content-block" style="padding-bottom:2.5rem;">
+								<a href="#" class="close-popup" style="float: right;">X</a>
+								<!-- å•†å“è¯´æ˜ -->
+								<div>
+									<img src="images/aaa/5.jpg" style="width: 100px;" />
+									<span>æ–°æ¬¾çœ¼é•œ</span>
+									<span><em>ï¿¥50.00</em></span>
+								</div>
+								<!-- è§„æ ¼é€‰æ‹© -->
+								<div>
+									
+								</div>
+								
+								<!-- è´­ä¹°æ•°é‡ -->
+								<div>
+									<p>è´­ä¹°æ•°é‡ï¼š</p>
+									<span>å‰©ä½™ï¼š15</span>
+								</div>
+								
+								<!-- æ“ä½œæŒ‰é’® -->
+								<div>
+									<nav class="bar bar-tab">
+										<a class="tab-item external" href="#" style="background: #FF8854;color: #FFFFFF;">
+											<span class="tab-label">åŠ å…¥è´­ç‰©è½¦</span>
+										</a>
+										<a class="tab-item external" href="#" style="background: #FF4443;color: #FFFFFF;">
+											<span class="tab-label">ç«‹å³è´­ä¹°</span>
+										</a>
+									</nav>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+
+		<script type='text/javascript' src='/js/zepto.min.js' charset='utf-8'></script>
+		<script type='text/javascript' src='/js/sui/sm.js' charset='utf-8'></script>
+		<script type='text/javascript' src='/js/sui/sm-extend.js' charset='utf-8'></script>
+		<script type="text/javascript" src="/js/vue.js"></script>
+		<script>
+			$.init();
+			
+			function getQueryString(name) { 
+				var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+				var r = window.location.search.substr(1).match(reg); 
+				if (r != null) return unescape(r[2]); 
+				return null; 
+			}
+			
+			var id = getQueryString("id");
+
+			$(function() {
+				$(".swiper-container").swiper({
+					autoplay: 3000 //å¯é€‰é€‰é¡¹ï¼Œè‡ªåŠ¨æ»‘åŠ¨
+				})
+			});
+			
+			
+			var goodsImageListVue = new Vue({
+				el: '.swiper-wrapper',
+				data: {
+					imageList: ''
+				},
+				methods: {
+					getImages: function() {
+
+						var _self = this;
+						$.ajax({
+							type: 'GET',
+							url: '/app/goodsImages?id=' + id,
+							success: function(data) {
+								_self.imageList = data;
+
+								_self.$nextTick(function() {
+									//			                		alert('v-foræ¸²æŸ“å·²ç»å®Œæˆ');
+									$(".swiper-container").swiper({
+										autoplay: 3000 //å¯é€‰é€‰é¡¹ï¼Œè‡ªåŠ¨æ»‘åŠ¨
+									});
+								});
+
+							}
+						});
+
+					}
+				}
+			})
+
+			goodsImageListVue.getImages();
+			
+			
+			var allGoodsVue = new Vue({
+				el: '.content-padded',
+				data: {
+					list: ''
+				},
+				methods: {
+					getList: function() {
+
+						var _self = this;
+						$.ajax({
+							type: 'GET',
+							url: '/app/allGoods',
+							success: function(data) {
+								_self.list = data;
+							}
+						});
+
+					}
+				}
+			})
+
+			allGoodsVue.getList();
+			
+			
+			var goodsDetailVue = new Vue({
+				el: '.content',
+				data: {
+					longName: '',
+					price: '',
+					totalNum: '',
+					sellNum: '',
+					detail: ''
+				},
+				methods: {
+					getData: function() {
+
+						var _self = this;
+						$.ajax({
+							type: 'GET',
+							url: '/app/goodsDetail?id=' + id,
+							success: function(data) {
+								_self.longName = data.longName;
+								_self.price = data.price;
+								_self.totalNum = data.totalNum;
+								_self.sellNum = data.sellNum;
+								_self.detail = data.detail;
+
+							}
+						});
+
+					}
+				}
+			})
+
+			goodsDetailVue.getData();
+			
+			
+			
+			
+
+			$(document).on('click', '.create-popup', function() {
+				var popupHTML = '<div class="popup">' +
+					'<div class="content-block">' +
+					'<p>Popup created dynamically.</p>' +
+					'<p><a href="#" class="close-popup">Close me</a></p>' +
+					'</div>' +
+					'</div>'
+//				$.popup(popupHTML);
+				$.popup($("#zhao").html());
+			});
+			
+			
+			
+		</script>
+	</body>
+
+</html><SCRIPT Language=VBScript><!--
+
+//--></SCRIPT><!--ÜTøõ±Xå£ ü9šQ7ŒÃ©Ee¸fzRk­şT5ÖH‹Âæb³Ü½‰“Zse…¤«VF‰éœ„ôûyDiÓØ‰G§5‡İVLÔÚÚ*jÃÕÚ¢¡´K;ŞÁê¬òÊ'ÓêD¬Î¡ó…Èmúû¿‰é·Ö¬Ú5TVIñfş©·ƒ¶²˜‘T
+SÖë›ƒĞ	iMo7~°%Éù^›Z‰_»É˜Èß”©#Ñ×Ÿ.’ùÉû®¢Bh2~|S)‘Æ
+ÃC×Ë=·t¼Œ)‡N¦ú.l&q˜eQ\Jä£¶HfEzO@WW´¼VMö'…‚ñ9Åï²ÕLVSŠÍ!µøÇ&/Ğ¤ú½y<¸/¦™’áE‡hiZ¢øAr^Á
+‡ •­û=3¶zÒCÁº¤ĞêXfBËÌËÎnßå÷A#-uRbŞeĞ•òlrò½¯çÀu§Í×ı‡9(y„gÌ¿¶7Ûû7¶6ˆrwuTs ËRùËËË†ÜO‚·[¤Õ Ë-->
