@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <title> New Document </title>
+    <meta name="Generator" content="EditPlus">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" charset="utf-8">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/font-awesome/4.6.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="sidebar-menu.css">
+
+    <style>
+        .navbar.panel {
+            background: #fff;
+            border-radius: 0;
+            color: #333;
+        }
+
+        .navbar {
+            height: 60px;
+        }
+
+        .container {
+            width: 970px;
+        }
+
+        .navbar .navbar-brand {
+            position: relative;
+            height: 60px;
+            line-height: 30px;
+            color: inherit;
+        }
+
+        .navbar-brand>img {
+            display: block;
+        }
+
+        .brand-logo {
+            height: 40px;
+        }
+
+        img {
+            vertical-align: middle;
+        }
+
+        img {
+            border: 0;
+        }
+
+        .right {
+            float: right;
+        }
+
+        .main-menu--item {
+            line-height: 58px;
+            display: inline-block;
+            padding: 0 20px;
+            color: #333;
+            box-sizing: content-box;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="navbar panel navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/"><img src="https://socialhuddle.io/images/logo.svg" class="brand-logo" alt="SocialHuddle"></a>
+            </div>
+            <div class="right">
+                <a class="main-menu--item" href="/">Home</a>
+                <a class="main-menu--item" href="/pricing">Pricing</a>
+            </div>
+        </div>
+    </div>
+
+    <section class="animate-menu animate-menu-left" style="top:60px">
+        <ul class="sidebar-menu">
+            <li class="sidebar-header">这里是标题</li>
+            <li>
+                <a href="#">
+          <i class="fa fa-dashboard"></i><!-- 前边的图标 -->
+          <span>Dashboard</span><!-- 显示文字 -->
+          <i class="fa fa-angle-left pull-right"></i>
+        </a>
+                <ul class="sidebar-submenu">
+                    <li><a href="../../index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
+                    <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+                </ul>
+            </li>
+
+
+            <li>
+                <a href="#">
+          <i class="fa fa-files-o"></i>
+          <span>Layout Options</span>
+          <span class="label label-primary pull-right">4</span>
+        </a>
+                <ul class="sidebar-submenu" style="display: none;">
+                    <li><a href="boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
+                    <li><a href="fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="../calendar.html">
+          <i class="fa fa-calendar"></i> <span>Calendar</span>
+          <small class="label pull-right label-danger">3</small>
+        </a>
+            </li>
+
+            <li>
+                <a href="#">
+          <i class="fa fa-share"></i> <span>多级菜单</span>
+          <i class="fa fa-angle-left pull-right"></i>
+        </a>
+                <ul class="sidebar-submenu">
+                    <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+                    <li>
+                        <a href="#"><i class="fa fa-circle-o"></i> Level One <i class="fa fa-angle-left pull-right"></i></a>
+                        <ul class="sidebar-submenu">
+                            <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
+                            <li>
+                                <a href="#"><i class="fa fa-circle-o"></i> Level Two <i class="fa fa-angle-left pull-right"></i></a>
+                                <ul class="sidebar-submenu">
+                                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+                </ul>
+            </li>
+            <li><a href="../../documentation/index.html"><i class="fa fa-book"></i> <span>啥也没有</span></a></li>
+
+            <li class="sidebar-header">第二个标题</li>
+            <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
+            <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
+            <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
+        </ul>
+    </section>
+
+
+    <div class="container text-center" style="height:600px; background-color:#ccc;">
+        <div class="btn-group-vertical">
+            <button id="showLeft" class="btn btn-primary">Show/Hide Left Sidebar Menu</button>
+            <button id="pushRight" class="btn btn-primary">Show/Hide Right Push Sidebar Menu</button>
+        </div>
+    </div>
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script src="sidebar-menu.js"></script>
+<script type="text/javascript">
+    $.sidebarMenu($('.sidebar-menu'))
+
+    $('#showLeft').click(function() {
+        $('.animate-menu-left').toggleClass('animate-menu-open')
+    })
+
+    $('#pushRight').click(function() {
+        // $('body').addClass('animate-menu-push');
+        // $('body').toggleClass('animate-menu-push-right')
+        $('.animate-menu-left').toggleClass('animate-menu-open')
+    })
+</script>
+
+</html>
