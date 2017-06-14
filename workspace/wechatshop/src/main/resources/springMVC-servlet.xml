@@ -21,7 +21,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		<!--<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository" />-->
 	<!--</context:component-scan>-->
 
-	<context:component-scan base-package="com.zsx.web.controller,com.weshop.controller,org.weixin.controller" />
+	<context:component-scan base-package="com.zsx.web.controller,com.weshop.controller,com.miniApp.controller,org.weixin.controller" />
 
 	<!-- <context:component-scan /> -->
 	<!-- 扫描指定的包中的类上的注解，常用的注解有： -->

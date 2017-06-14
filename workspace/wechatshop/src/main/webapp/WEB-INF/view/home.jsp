@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="/WEB-INF/view/common/com.jsp" %>
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8">
@@ -60,6 +61,16 @@
             color: #333;
             box-sizing: content-box;
         }
+
+        .col-left{
+            height: 100%;
+            width: 15%;
+            padding-left: 30px;
+        }
+
+        .col-right{
+            border-left: 1px solid #ddd;
+        }
     </style>
 </head>
 <body>
@@ -79,21 +90,26 @@
 </div>
 
 <div class="row ">
-    <div class="col-md-2 ">
+    <div class="col-md-2 col-left">
         <ul class="nav nav-pills nav-stacked" id="myNav">
             <li class="active"><a url="# ">Home</a></li>
-            <li><a url="/weshop/index">首页图片轮播</a></li>
-            <li><a url="/weshop/goodsListPage">商品列表</a></li>
+            <li><a url="${basePath }/weshop/index">首页图片轮播</a></li>
+            <li><a url="${basePath }/weshop/goodsListPage">商品列表</a></li>
             <li><a url="# ">VB.Net</a></li>
             <li><a url="# ">Java</a></li>
             <li><a url="# ">PHP</a></li>
         </ul>
     </div>
-    <div class="col-md-10 ">
-        <iframe href="/index">
+    <div class="col-md-10 col-right">
+        <iframe src="${basePath }/index.jsp" frameborder="0" style="width: 100%; height: 2000px" >
         </iframe>
     </div>
 </div>
+
+
+<footer style="height: 50px; background-color: #0f0f0f; color: #FFFFFF; text-align: center;">
+    一些文字
+</footer>
 
 <script src="/js/jquery-1.9.1.min.js "></script>
 <script src="/js/bootstrap-3.3.0/css/bootstrap.min.css"></script>
@@ -103,6 +119,8 @@
             var url = $(this).attr("url");
 
             console.log(url)
+
+            $("iframe").attr("src", url);
 
             $(this).parent().siblings().removeClass("active");
             $(this).parent().addClass("active");
