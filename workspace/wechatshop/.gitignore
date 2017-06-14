@@ -1,3 +1,4 @@
 /target/
 /.idea/
 wechatshop.iml
+/src/main/resources/conf/jdbc.properties
