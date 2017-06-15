@@ -8,12 +8,21 @@
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="/js/bootstrap-3.3.0/css/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" href="/js/bootstrap-table/bootstrap-table.min.css" />
-	
+	<style type="text/css">
+		.form-inline .form-group {
+			width: 49%;
+			margin: 10px 0;
+		}
+		.form-inline .form-group label{
+			width: 65px;
+			text-align: right;
+		}
+	</style>
 </head>
 <body>
 <h1>商品列表</h1>
 
-	<div>
+	<div class="panel panel-default">
 		<table id="table"></table>
 	</div>
 	
@@ -27,50 +36,51 @@
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					<h4 class="modal-title" id="myModalLabel1"></h4>
 				</div>
-				<div class="">
-			    	<form class="bs-example bs-example-form" id="showForm1" role="form">
+				<div class="panel panel-body">
+			    	<form class="bs-example bs-example-form form-inline" id="showForm1" role="form">
 			    		
 			    		<div class="form-group">
-							<label for="name">短名称</label>
+							<label for="shortName">短名称</label>
 							<input type="text" class="form-control" id="shortName" placeholder="请输入短名称">
 						</div>
 						<div class="form-group">
-							<label for="name">长名称</label>
+							<label for="longName">长名称</label>
 							<input type="text" class="form-control" id="longName" placeholder="请输入长名称">
 						</div>
 						<div class="form-group">
-							<label for="name">简介</label>
+							<label for="summary">简介</label>
 							<input type="text" class="form-control" id="summary" placeholder="请输入简介">
 						</div>
-						<div class="form-group">
-							<label for="name">短名称</label>
+						<div class="form-group" style="width: 100%;">
+							<label for="file_image">图片</label>
 							<input type="file" class="form-control" name="tupian" id="file_image"/>
-							<img alt="" src="" id="image" height=100>
+							<img alt="显示图片" src="" id="image" height=100>
 						</div>
 						<div class="form-group">
-							<label for="name">价格</label>
+							<label for="price">价格</label>
 							<input type="text" class="form-control" id="price" placeholder="请输入价格">
 						</div>
 						
 						<div class="form-group">
-							<label for="name">商品类型</label>
+							<label for="goodsType">商品类型</label>
 							<input type="text" class="form-control" id="goodsType" placeholder="请输入数字">
 						</div>
 						<div class="form-group">
-							<label for="name">总数量</label>
+							<label for="totalNum">总数量</label>
 							<input type="text" class="form-control" id="totalNum" placeholder="请输入数字">
 						</div>
 						<div class="form-group">
-							<label for="name">卖出数量</label>
+							<label for="sellNum">卖出数量</label>
 							<input type="text" class="form-control" id="sellNum" placeholder="请输入数字">
 						</div>
 						
-						<div class="form-group">
-							<label for="name">详情</label>
-							<input type="text" class="form-control" id="detail" placeholder="请输入详情">
+						<div class="form-group" style="width: 100%">
+							<label for="detail">详情</label>
+							<textarea rows="5" cols="62" class="form-control" id="detail" placeholder="请输入详情"></textarea>
 						</div>
 			    		
-			    		<span class="btn btn-primary" onclick="submitForm1();">保存</span>
+			    		<span class="btn btn-primary btn-lg" onclick="submitForm1();"
+							  style="position: relative; left: 450px;">保存</span>
 			    		
 			    	</form>
 				</div>
@@ -166,6 +176,7 @@
 					title: '详细介绍',
 					align: 'center',
 					valign: 'middle',
+					width: 450,
 					formatter : function(value, row, index){
 						return value;
 					}
