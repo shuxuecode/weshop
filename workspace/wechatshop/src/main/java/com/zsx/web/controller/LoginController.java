@@ -11,7 +11,12 @@ public class LoginController {
 	
 	@RequestMapping("login")
 	public String toLoginPage() {
-		return "login2";
+		return "login/login";
+	}
+
+	@RequestMapping("register")
+	public String toRegisterPage() {
+		return "login/register";
 	}
 
 }

@@ -14,6 +14,6 @@
 	
 	request.setAttribute("basePath", _basePath);
 	
-	System.out.print(_basePath);
+//	System.out.print(_basePath);
 %>
 

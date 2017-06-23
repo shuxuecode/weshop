@@ -3,7 +3,7 @@
 
 <%
 String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"";
 String userName = (session.getAttribute("userName") == null) ? "" : session.getAttribute("userName").toString();
 %>
 
@@ -12,7 +12,7 @@ String userName = (session.getAttribute("userName") == null) ? "" : session.getA
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>中大眼科</title>
 </head>
-<body>
+<body style="display: none">
 <h2>你好</h2>
 <br/>
 
@@ -20,6 +20,10 @@ String userName = (session.getAttribute("userName") == null) ? "" : session.getA
 <br/><br/><br/>
 <a href="<%=basePath%>/weshop/goodsListPage">商品列表</a>
 
+<script type="text/javascript">
 
+    window.location.href = "<%=basePath%>/login/login";
+
+</script>
 </body>
 </html>
