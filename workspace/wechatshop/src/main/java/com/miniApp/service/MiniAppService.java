@@ -20,4 +20,6 @@ public interface MiniAppService {
     //	商品详细页面数据
     JSONObject getGoodsDetail(Long id);
 
+    JSONArray getShoppingCart(Long userId);
+
 }

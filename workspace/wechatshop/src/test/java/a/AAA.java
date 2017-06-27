@@ -18,10 +18,14 @@ public class AAA {
 
 
     public static void main(String[] args) {
+
+        String substring = "1,2,".substring(0, "1,2,".length() - 1);
+        System.out.println(substring);
+
         String src = "C:\\Users\\QDHL\\Desktop\\111.gif";
         String target = "C:\\Users\\QDHL\\Desktop\\aaa";
 //        get(src, target, 0);
-        get(src, target, 1);
+//        get(src, target, 1);
 //        get(src, target, 2);
 //        get(src, target, 3);
 //        get(src, target, 4);

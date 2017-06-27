@@ -78,4 +78,26 @@ public class MiniAppServiceImpl implements MiniAppService{
         }
         return null;
     }
+
+    @Override
+    public JSONArray getShoppingCart(Long userId) {
+        JSONArray array = new JSONArray();
+        String sql = "SELECT id, user_id, good_id FROM w_shopping_cart WHERE is_del = 0 AND user_id = " + userId + "";
+        List<Map<String, Object>> list = userMapper.executeSQL(sql);
+        StringBuffer goodIds = new StringBuffer();
+        goodIds.append("'',");
+        for (Map<String, Object> map : list) {
+            Object good_id = map.get("good_id");
+            goodIds.append(good_id).append(",");
+        }
+
+        String substring = goodIds.substring(0, goodIds.length() - 1);
+
+        sql = "SELECT id, longName, image, price FROM w_goods WHERE id IN (" + substring + ")";
+        List<Map<String, Object>> goods = userMapper.executeSQL(sql);
+        for (Map<String, Object> map : goods) {
+            array.add(map);
+        }
+        return array;
+    }
 }

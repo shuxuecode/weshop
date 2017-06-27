@@ -46,6 +46,11 @@ public class MiniAppController {
     }
 
 
+    @GetMapping("shopCart.json")
+    @ResponseBody
+    public JSONArray getShoppingCart(@RequestParam(name = "userId", defaultValue = "1") Long userId){
+        return miniAppService.getShoppingCart(userId);
+    }
 
 
 }
