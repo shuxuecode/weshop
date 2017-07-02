@@ -45,7 +45,7 @@ public interface MiniAppService {
      * @param userId
      * @return
      */
-    JSONArray getAddressList(Long userId);
+    JSONArray getAddressList(Long userId, boolean defalut);
 
     /**
      * 根据主键获取收货地址，主要用于修改
@@ -55,5 +55,7 @@ public interface MiniAppService {
     JSONObject getUserAddressById(Long id);
 
     JSONObject addOrder(Map map);
+
+    JSONArray getUserOrders(Long userId);
 
 }

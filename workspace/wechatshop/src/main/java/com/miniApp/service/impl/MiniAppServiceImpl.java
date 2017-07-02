@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -142,12 +143,18 @@ public class MiniAppServiceImpl implements MiniAppService {
     }
 
     @Override
-    public JSONArray getAddressList(Long userId) {
+    public JSONArray getAddressList(Long userId, boolean defalut) {
         JSONArray array = new JSONArray();
-        String sql = "SELECT * FROM w_address WHERE is_del = 0 AND user_id = " + userId + "";
+        String sql = "SELECT * FROM w_address WHERE is_del = 0 AND user_id = " + userId + "  order by status desc ";
         List<Map<String, Object>> list = userMapper.executeSQL(sql);
-        for (Map<String, Object> map : list) {
-            array.add(map);
+        if (list.size() > 0){
+            if (defalut){
+                array.add(list.get(0));
+            }else {
+                for (Map<String, Object> map : list) {
+                    array.add(map);
+                }
+            }
         }
         return array;
     }
@@ -169,7 +176,7 @@ public class MiniAppServiceImpl implements MiniAppService {
         Long user_id = (Long) map.get("user_id");
         Long address_id = (Long) map.get("address_id");
 
-        Long amount = (Long) map.get("amount");
+        BigDecimal amount = (BigDecimal) map.get("amount");
 
         Integer dispatch_type = (Integer) map.get("dispatch_type");
         String message = (String) map.get("message");
@@ -189,5 +196,16 @@ public class MiniAppServiceImpl implements MiniAppService {
             jsonObject.put("success", false);
         }
         return jsonObject;
+    }
+
+    @Override
+    public JSONArray getUserOrders(Long userId) {
+        JSONArray array = new JSONArray();
+        String sql = "SELECT order_number, amount, dispatch_type, message, `status` FROM w_order WHERE is_del = 0 AND user_id = " + userId + "  ORDER BY create_time DESC ";
+        List<Map<String, Object>> list = userMapper.executeSQL(sql);
+        for (Map<String, Object> map : list) {
+            array.add(map);
+        }
+        return array;
     }
 }

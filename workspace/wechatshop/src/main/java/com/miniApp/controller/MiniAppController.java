@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -63,7 +64,13 @@ public class MiniAppController {
     @GetMapping("getAddresss.json")
     @ResponseBody
     public JSONArray getAddressList(@RequestParam(name = "userId", defaultValue = "1") Long userId){
-        return miniAppService.getAddressList(userId);
+        return miniAppService.getAddressList(userId, false);
+    }
+
+    @GetMapping("getDefalutAddress.json")
+    @ResponseBody
+    public JSONArray getDefalutAddress(@RequestParam(name = "userId", defaultValue = "1") Long userId){
+        return miniAppService.getAddressList(userId, true);
     }
 
     @GetMapping("getAddressById.json")
@@ -100,7 +107,7 @@ public class MiniAppController {
     @ResponseBody
     public JSONObject addOrder(@RequestParam(name = "userId", defaultValue = "1") Long userId,
                                      @RequestParam(name = "addressId") Long addressId,
-                                     @RequestParam(name = "amount") Long amount,
+                                     @RequestParam(name = "amount") BigDecimal amount,
                                      @RequestParam(name = "dispatchType") Integer dispatchType,
                                      @RequestParam(name = "message") String message){
         Map map = new HashMap();
@@ -111,6 +118,13 @@ public class MiniAppController {
         map.put("dispatch_type", dispatchType);
         map.put("message", message);
         return miniAppService.addOrder(map);
+    }
+
+
+    @GetMapping("getOrders.json")
+    @ResponseBody
+    public JSONArray getUserOrders(@RequestParam(name = "userId", defaultValue = "1") Long userId){
+        return miniAppService.getUserOrders(userId);
     }
 
 }
