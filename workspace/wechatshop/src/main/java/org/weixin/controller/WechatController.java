@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.weixin.entity.message.resp.TextMessage;
 import org.weixin.util.MessageUtil;
 import org.weixin.util.SignUtil;
+import org.weixin.util.TuLingRobotUtil;
 
 @Controller
 @RequestMapping("/wechat")
@@ -82,14 +83,32 @@ public class WechatController {
 		System.out.println(msgType);
 		System.out.println(msgId);
 		System.out.println(createTime);
-		
+
+		// 文本消息
+		if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_TEXT)) {
+			String content = requestMap.get("Content");
+
+			String msg = TuLingRobotUtil.getMsg(content);
+			if (msg != null){
+				respContent = msg;
+			}
+		}else if(msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_VOICE)){
+			String content = requestMap.get("Recognition");
+
+			String msg = TuLingRobotUtil.getMsg(content);
+			if (msg != null){
+				respContent = msg;
+			}
+		}
+
+
 		// 默认回复此文本消息
-		TextMessage textMessage = new TextMessage();
-		textMessage.setToUserName(fromUserName);
-		textMessage.setFromUserName(toUserName);
-		textMessage.setCreateTime(new Date().getTime());
-		textMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_TEXT);
-		textMessage.setContent(respContent + requestMap.get("Content"));
+//		TextMessage textMessage = new TextMessage();
+//		textMessage.setToUserName(fromUserName);
+//		textMessage.setFromUserName(toUserName);
+//		textMessage.setCreateTime(new Date().getTime());
+//		textMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_TEXT);
+//		textMessage.setContent(respContent + requestMap.get("Content"));
 
 		
 		
@@ -102,7 +121,8 @@ public class WechatController {
 		respMessage += "<FromUserName><![CDATA[" + toUserName + "]]></FromUserName>";
 		respMessage += "<CreateTime>" + new Date().getTime() + "</CreateTime>";
 		respMessage += "<MsgType><![CDATA[text]]></MsgType>";
-		respMessage += "<Content><![CDATA[" + requestMap.get("Content") + "]]></Content>";
+//		respMessage += "<Content><![CDATA[" + requestMap.get("Content") + "]]></Content>";
+		respMessage += "<Content><![CDATA[" + respContent + "]]></Content>";
 		respMessage += "</xml>";
 		
 
