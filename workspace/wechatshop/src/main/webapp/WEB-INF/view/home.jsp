@@ -93,15 +93,15 @@
     <div class="col-md-2 col-left">
         <ul class="nav nav-pills nav-stacked" id="myNav">
             <li class="active"><a url="# ">Home</a></li>
-            <li><a url="${basePath }/weshop/index">首页图片轮播</a></li>
-            <li><a url="${basePath }/weshop/goodsListPage">商品列表</a></li>
+            <li><a url="/weshop/index">首页图片轮播</a></li>
+            <li><a url="/weshop/goodsListPage">商品列表</a></li>
             <li><a url="# ">VB.Net</a></li>
             <li><a url="# ">Java</a></li>
             <li><a url="# ">PHP</a></li>
         </ul>
     </div>
     <div class="col-md-10 col-right">
-        <iframe src="${basePath }/index.jsp" frameborder="0" style="width: 100%; height: 2000px" >
+        <iframe src="/index.jsp" frameborder="0" style="width: 100%; height: 2000px" >
         </iframe>
     </div>
 </div>
