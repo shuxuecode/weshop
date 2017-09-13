@@ -30,12 +30,14 @@
 					<h4 class="modal-title" id="myModalLabel1"></h4>
 				</div>
 				<div class="">
-			    	<form class="bs-example bs-example-form" id="showForm1" role="form" enctype="multipart/form-data">
+			    	<form class="bs-example bs-example-form" style="text-align: center;"
+						  id="showForm1" role="form" enctype="multipart/form-data">
+
+						<img src="/images/demoImg.jpg" id="img" style="height: 200px"/>
+
 			    		<input type="file" id="tupian" name="tupian" class="form-control" accept="image/*"/>
 			    		
-			    		<span class="btn btn-primary" onclick="submitForm1();">保存</span>
-			    		
-			    		<img src="" id="img" />
+			    		<span class="btn btn-primary" style="margin: 20px;" onclick="submitForm1();">保存</span>
 			    	</form>
 				</div>
 			</div><!-- /.modal-content -->
@@ -63,6 +65,7 @@
 		$('#table').bootstrapTable({
 			url: "${basePath }/weshop/homeImg",
 			cache: false,
+            striped: true,
 			pagination: true,
 			pageList: [10,20],
 			pageSize:10,
@@ -88,7 +91,8 @@
 					field: 'url',
 					title: '图片地址',
 					align: 'center',
-					valign: 'middle'
+					valign: 'middle',
+                    visible: false
 				},{
 					field: 'url',
 					title: '图片预览',
