@@ -109,7 +109,9 @@ public class MiniAppController {
                                      @RequestParam(name = "addressId") Long addressId,
                                      @RequestParam(name = "amount") BigDecimal amount,
                                      @RequestParam(name = "dispatchType") Integer dispatchType,
-                                     @RequestParam(name = "message") String message){
+                                     @RequestParam(name = "message") String message,
+                                     @RequestParam(name = "ids") String ids
+    ){
         Map map = new HashMap();
         map.put("order_number", System.currentTimeMillis());
         map.put("user_id", userId);
@@ -117,6 +119,7 @@ public class MiniAppController {
         map.put("amount", amount);
         map.put("dispatch_type", dispatchType);
         map.put("message", message);
+        map.put("ids", ids);
         return miniAppService.addOrder(map);
     }
 

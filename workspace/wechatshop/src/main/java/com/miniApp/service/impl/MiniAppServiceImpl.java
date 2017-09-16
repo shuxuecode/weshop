@@ -147,10 +147,10 @@ public class MiniAppServiceImpl implements MiniAppService {
         JSONArray array = new JSONArray();
         String sql = "SELECT * FROM w_address WHERE is_del = 0 AND user_id = " + userId + "  order by status desc ";
         List<Map<String, Object>> list = userMapper.executeSQL(sql);
-        if (list.size() > 0){
-            if (defalut){
+        if (list.size() > 0) {
+            if (defalut) {
                 array.add(list.get(0));
-            }else {
+            } else {
                 for (Map<String, Object> map : list) {
                     array.add(map);
                 }
@@ -180,6 +180,8 @@ public class MiniAppServiceImpl implements MiniAppService {
 
         Integer dispatch_type = (Integer) map.get("dispatch_type");
         String message = (String) map.get("message");
+        String ids = (String) map.get("ids");
+
         Integer status = 0;
 
         Integer isDel = 0;
@@ -187,10 +189,12 @@ public class MiniAppServiceImpl implements MiniAppService {
 
         JSONObject jsonObject = new JSONObject();
         String sql = "INSERT INTO w_order (`order_number` ,`user_id` ,`address_id` ,`amount` ,`dispatch_type` ,`message` ,`status` ,`is_del`,`creator` ,`create_time`)\n" +
-                "VALUES("+order_number+", "+user_id+", "+address_id+", "+amount+", " +
-                ""+dispatch_type+", '"+message+"', "+status+", "+isDel+", '"+creator+"', now())";
+                "VALUES(" + order_number + ", " + user_id + ", " + address_id + ", " + amount + ", " +
+                "" + dispatch_type + ", '" + message + "', " + status + ", " + isDel + ", '" + creator + "', now())";
+        String sql2 = "UPDATE w_shopping_cart SET is_del = 1 WHERE good_id in (" + ids + ")";
         try {
             userMapper.executeSQL(sql);
+            userMapper.executeSQL(sql2);
             jsonObject.put("success", true);
         } catch (Exception e) {
             jsonObject.put("success", false);
