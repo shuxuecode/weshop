@@ -7,7 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 @Aspect
 public class ExceptionAspect {
 
@@ -25,7 +25,7 @@ public class ExceptionAspect {
         System.out.println("前置通知");
         String className = joinPoint.getTarget().getClass().getName();
         String methodName = joinPoint.getSignature().getName();
-//        logger.debug(className + "的" + methodName + "执行了");
+        logger.debug(className + "的" + methodName + "执行了");
         System.out.println(className + "的" + methodName + "执行了");
         Object[] args = joinPoint.getArgs();
         StringBuilder log = new StringBuilder("入参为");

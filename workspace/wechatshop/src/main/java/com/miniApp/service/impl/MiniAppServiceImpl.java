@@ -39,7 +39,7 @@ public class MiniAppServiceImpl implements MiniAppService {
     public JSONArray getHomeImages(String creator) {
         JSONArray array = new JSONArray();
         JSONObject object = null;
-        String sql = "SELECT id, url FROM w_home_image where creator = '" + creator + "'";
+        String sql = "SELECT id, url FROM w_home_image where creator = '" + creator + "' ORDER BY id DESC LIMIT 5 ";
         List<Map<String, Object>> list = userMapper.executeSQL(sql);
         for (Map<String, Object> map : list) {
             object = new JSONObject();

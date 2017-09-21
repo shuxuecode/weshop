@@ -3,6 +3,7 @@ package com.weshop.service.impl;
 import java.util.List;
 import java.util.Map;
 
+import com.zsx.web.model.Contants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -83,7 +84,7 @@ public class WeshopServiceImpl implements WeshopService {
 	@Override
 	public JSONObject addHomeImage(String url) {
 		JSONObject object = new JSONObject();
-		String sql = "INSERT INTO w_home_image(url) VALUES('" + url + "')";
+		String sql = "INSERT INTO w_home_image(url, creator) VALUES('" + url + "', '" + Contants.userId + "')";
 		userMapper.executeSQL(sql);
 		object.put("success", true);
 		return object;
@@ -94,9 +95,9 @@ public class WeshopServiceImpl implements WeshopService {
 			int goodsType, int totalNum, int sellNum, String detail) {
 		
 		JSONObject object = new JSONObject();
-		String sql = "INSERT INTO w_goods(shortName, longName, summary, image, price, goodsType, totalNum, sellNum, detail) "
+		String sql = "INSERT INTO w_goods(shortName, longName, summary, image, price, goodsType, totalNum, sellNum, detail, creator) "
 				+" VALUES('"+shortName+"','"+longName+"','"+summary+"','"
-				+image+"','"+price+"',"+goodsType+","+totalNum+","+sellNum+",'"+detail+"')";
+				+image+"','"+price+"',"+goodsType+","+totalNum+","+sellNum+",'"+detail+"','" + Contants.userId + "')";
 		userMapper.executeSQL(sql);
 		object.put("success", true);
 		return object;
@@ -115,6 +116,7 @@ public class WeshopServiceImpl implements WeshopService {
 	public JSONObject delGoods(Long id) {
 		JSONObject object = new JSONObject();
 		String sql = "DELETE FROM w_goods WHERE id = " + id;
+		sql = "update w_goods set creator='del'";
 		userMapper.executeSQL(sql);
 		object.put("success", true);
 		return object;
