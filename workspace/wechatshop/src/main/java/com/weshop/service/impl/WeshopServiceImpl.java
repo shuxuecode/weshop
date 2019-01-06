@@ -129,7 +129,6 @@ public class WeshopServiceImpl implements WeshopService {
 		String sql = "INSERT INTO w_image(url) VALUES('" + url + "')";
 		userMapper.executeSQL(sql);
 		
-		addHomeImage(url);
 		sql = "SELECT id FROM w_image WHERE url = '"+url+"'";
 		List<Map<String, Object>> list = userMapper.executeSQL(sql);
 		if (list.size()>0) {
